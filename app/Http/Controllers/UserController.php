@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -12,13 +13,13 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Application/Factory/View
+     * @return Application|Factory|View
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
         return view('users.index', [
 
-            'users' => User::all()
+            'users' => User::paginate(3)
         ]);
     }
 
