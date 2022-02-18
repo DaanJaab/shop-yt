@@ -19,7 +19,7 @@ class UserController extends Controller
     {
         return view('users.index', [
 
-            'users' => User::paginate(3)
+            'users' => User::paginate(3) // (3) returns on page
         ]);
     }
 
@@ -86,6 +86,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $flight = User::find($id);
+        $flight->delete();
+        return response()->json([
+            'status' => 'success'
+        ]);
     }
 }
