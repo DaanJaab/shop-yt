@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpsertProductRequest;
 use App\Models\Product;
 use Exception;
 use Illuminate\Http\Request;
@@ -33,12 +34,13 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UpsertProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UpsertProductRequest $request)
     {
-        $product = new Product($request->all());
+
+        $product = new Product($request->validated());
         if (!$request->file('image') == null) {
             $product->image_path = $request->file('image')->store('products');
         }
@@ -75,13 +77,13 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UpsertProductRequest  $request
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(UpsertProductRequest $request, Product $product)
     {
-        $product->fill($request->all());
+        $product->fill($request->validated());
         if (!$request->file('image') == null) {
             $product->image_path = $request->file('image')->store('products');
         }
