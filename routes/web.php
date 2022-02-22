@@ -14,9 +14,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index']);
 
 Route::get('/users/list', [App\Http\Controllers\UserController::class, 'index'])->middleware('auth');
 Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->middleware('auth');
