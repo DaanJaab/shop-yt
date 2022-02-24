@@ -28,7 +28,30 @@ class UpsertProductRequest extends FormRequest
             'body' => 'required|max:1500',
             'amount' => 'required|integer|min:0',
             'price' => 'required|numeric|between:0,999999.99',
-            'image' => 'nullable|image|mimes:jpg,png'
+            'image' => 'nullable|image|mimes:jpg,png',
+            'category_id' => 'nullable|integer|min:0'
+        ];
+    }
+
+    /**
+     * Zmiana komunikatu w wybranym formularzu
+     *
+     */
+    public function messages()
+    {
+        return [
+            'name.required' => 'Jest wymagane pole :attribute!'
+        ];
+    }
+
+    /**
+     * Zmiana nazwy atrybutu
+     *
+     */
+    public function attributes()
+    {
+        return [
+            'name' => 'nazwa produktu'
         ];
     }
 }

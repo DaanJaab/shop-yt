@@ -35,6 +35,12 @@
 @endsection
 @section('javascript')
     const deleteUrl = "{{ url('users') }}/";
+    const confirmDeleteMsg = "{{ __('shop.messages.delete_confirm') }}";
+    const confirmDeleteDescMsg = "{{ __('shop.messages.delete_description') }}";
+    const confirmDeleteButton = "{{ __('shop.button.delete_confirm') }}";
+    const cancelDeleteButton = "{{ __('shop.button.delete_cancel') }}";
+    const deletedMsg = "{{ __('shop.messages.deleted') }}";
+    const somethingWrongMsg = "{{ __('shop.messages.something_wrong') }}";
 @endsection
 @section('js-files')
     <script src="{{ asset('js/delete.js') }}"></script>

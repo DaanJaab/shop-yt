@@ -4,11 +4,11 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <h1>Lista produktów</h1>
+            <h1>{{ __('shop.product.index_title') }}</h1>
         </div>
         <div class="col-6">
             <a class="float-end" href="{{ route('products.create') }}">
-                <button type="button" class="btn btn-primary">Dodaj</button>
+                <button type="button" class="btn btn-primary">{{ __('shop.button.add') }}</button>
             </a>
         </div>
     </div>
@@ -17,11 +17,11 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Nazwa</th>
-            <th scope="col">Opis</th>
-            <th scope="col">Stan</th>
-            <th scope="col">Cena</th>
-            <th scope="col">Akcje</th>
+            <th scope="col">{{ __('shop.product.fields.name') }}</th>
+            <th scope="col">{{ __('shop.product.fields.description') }}</th>
+            <th scope="col">{{ __('shop.product.fields.amount') }}</th>
+            <th scope="col">{{ __('shop.product.fields.price') }}</th>
+            <th scope="col">{{ __('shop.columns.actions') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -51,6 +51,12 @@
 @endsection
 @section('javascript')
     const deleteUrl = "{{ url('products') }}/";
+    const confirmDeleteMsg = "{{ __('shop.messages.delete_confirm') }}";
+    const confirmDeleteDescMsg = "{{ __('shop.messages.delete_description') }}";
+    const confirmDeleteButton = "{{ __('shop.button.delete_confirm') }}";
+    const cancelDeleteButton = "{{ __('shop.button.delete_cancel') }}";
+    const deletedMsg = "{{ __('shop.messages.deleted') }}";
+    const somethingWrongMsg = "{{ __('shop.messages.something_wrong') }}";
 @endsection
 @section('js-files')
     <script src="{{ asset('js/delete.js') }}"></script>

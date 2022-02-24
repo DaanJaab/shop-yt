@@ -2,12 +2,12 @@ $(function() {
     $('.delete').click(function() {
 
           Swal.fire({
-            title: 'Czy na pewno chcesz usunąć rekord?',
-            text: "Nie można tego cofnąć",
+            title: confirmDeleteMsg,
+            text: confirmDeleteDescMsg,
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Tak, usuń!',
-            cancelButtonText: 'Nie, zachowaj!',
+            confirmButtonText: confirmDeleteButton,
+            cancelButtonText: cancelDeleteButton,
             reverseButtons: false
           }).then((result) => {
             if (result.isConfirmed) {
@@ -17,7 +17,7 @@ $(function() {
                   })
                     .done(function(data) {
                         Swal.fire(
-                            'Usunięto!',
+                            deletedMsg,
                             '',
                             'success'
                           )
@@ -25,7 +25,7 @@ $(function() {
                     })
                     .fail(function(data) {
                         Swal.fire(
-                            'Coś poszło nie tak',
+                            somethingWrongMsg,
                             data.responseJSON.message,
                             'error'
                         )
