@@ -40,6 +40,20 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="category" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.category') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="category_id" class="form-control" name="category_id" disabled>
+                                    @if($product->hasCategory())
+                                        <option>{{ $product->category->name }}</option>
+                                    @else
+                                        <option>Brak</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                     <a href="{{ route('products.index') }}">
